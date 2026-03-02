@@ -1,19 +1,26 @@
 from turtle import *
+import turtle as t
 import random
-directions = [90, 180, 270, 0]
 
+t.colormode(255)
 timmy = Turtle()
-timmy.colormode(255)
-timmy.pensize(15)
+
 timmy.speed("fastest")
 
 def random_color():
-    r = random.randint
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    return (r, g, b)
 
-for _ in range(200):
-    timmy.forward(30)
-    timmy.color(random.choice(colours))
-    timmy.setheading(random.choice(directions))
+def draw(size_of_gap):
+
+    for _ in range(int(360/ size_of_gap)):
+        timmy.color(random_color())
+        timmy.circle(100)
+        timmy.setheading(timmy.heading() + size_of_gap)
+
+draw(10)
 
 screen = Screen()
 screen.exitonclick()
