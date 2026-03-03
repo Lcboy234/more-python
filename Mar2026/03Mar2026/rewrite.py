@@ -1,6 +1,8 @@
 from turtle import *
 import random
 
+is_race_on = False
+
 screen = Screen()
 screen.setup(width = 500, height = 400)
 user_bet = screen.textinput(title = "Make your bet", prompt = "Which color are you choosing? Pick your color: ")
@@ -17,8 +19,6 @@ for index in range(0, 6):
     tim.goto(x=-230, y=distances[index])
     all_turtles.append(tim)
 
-is_race_on = False
-
 if user_bet:
     is_race_on = True
 
@@ -31,7 +31,7 @@ while is_race_on:
                 print(f"You've won! The {winning_color} color reached the end first.")
             else:
                 print(f"You've lose! The {winning_color} color reached the end first.")
-                
+
         distance = random.randint(0, 10)
         one_turtle.forward(distance)
 
