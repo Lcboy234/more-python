@@ -8,6 +8,7 @@ LEFT = 180
 RIGHT = 0
 
 class Snake:
+
     def __init__(self):
         self.segment = []
         self.create_snake()
@@ -15,11 +16,19 @@ class Snake:
 
     def create_snake(self):
         for position in STARTING_POSITION:
-            cube = Turtle("square")
-            cube.color("white")
-            cube.penup()
-            cube.goto(position)
-            self.segment.append(cube)
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        cube = Turtle("square")
+        cube.color("white")
+        cube.penup()
+        cube.goto(position)
+        self.segment.append(cube)
+
+    def extend(self):
+        # add a new segment to the snake.
+        # position() is used to define the position which mean coordinates
+        self.add_segment(self.segment[-1].position())
 
     def move(self):
         for seg_num in range(len(self.segment) - 1, 0, -1):
