@@ -30,6 +30,15 @@ class Snake:
         # position() is used to define the position which mean coordinates
         self.add_segment(self.segment[-1].position())
 
+    # initialise the snake again
+    def reset(self):
+        for seg in self.segment:
+            seg.goto(1000, 1000)
+            
+        self.segment.clear()
+        self.create_snake()
+        self.head = self.segment[0]
+
     def move(self):
         for seg_num in range(len(self.segment) - 1, 0, -1):
             front_x = self.segment[seg_num - 1].xcor()
